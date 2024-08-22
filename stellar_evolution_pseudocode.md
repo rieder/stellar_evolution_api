@@ -48,6 +48,18 @@ function get_mass(star_index, mass, result):
        another number if an error occurred
 ```
 ```
+function get_age(star_index, age, result):
+    in: star_index
+    out: result, age
+
+    # sets age to be the current age of star(index)
+    age = star(star_index).age
+    result = 
+       0  if successful
+       -1 if not implemented
+       another number if an error occurred
+```
+```
 function get_property_by_name(star_index, property_name, value, result):
     in: star_index, property_name
     out: result
