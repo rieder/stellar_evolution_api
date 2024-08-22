@@ -45,6 +45,18 @@ function get_mass(star_index, mass, result):
        -1 if not implemented
        another number if an error occurred
 ```
+```
+function get_property_by_name(star_index, property_name, value, result):
+    in: star_index, property_name
+    out: result
+
+    # sets value to be the current value of star(index).[property_name]
+    value = star(star_index).[property_name]
+    result = 
+       0  if successful
+       -1 if not implemented
+       another number if an error occurred
+```
 
 ## Set value
 
@@ -55,6 +67,18 @@ function set_mass(star_index, mass, result):
 
     # sets mass of star(star_index) to mass
     star(star_index).mass = mass
+    result = 
+       0  if successful
+       -1 if not implemented
+       another number if an error occurred
+```
+```
+function set_property_by_name(star_index, property_name, value, result):
+    in: star_index, property_name, value
+    out: result
+
+    # sets star(index).[property_name] to value
+    star(star_index).[property_name] = value
     result = 
        0  if successful
        -1 if not implemented
