@@ -3,10 +3,39 @@ This document describes function signatures for a stellar evolution API in pseud
 
 The API is based on the APIs used in AMUSE [https://amuse.readthedocs.io/en/latest/reference/introduction_interface_specification.html] and is further inspired by FDPS [https://github.com/FDPS/FDPS/blob/master/doc/doc_specs_cpp_en.pdf].
 
+## Initialise
+
+```
+function initialise_code:
+    in:
+    out: result
+
+    # initialises the code 
+    result =
+       0  if succesful
+       -1 if not implemented
+       another number if an error occurred
+```
+
+## Add a star
+
+```
+function new_particle:
+    in: mass
+    out: result, star_index
+
+    # creates a new star, with mass 'mass'
+    # star_index is a unique identifier for this star, should not be re-used if the star is deleted
+    result =
+       0  if succesful
+       -1 if not implemented
+       another number if an error occurred
+```
+
 ## Evolve a star
 
 ```
-function evolve_star(star_index, time_end, result):
+function evolve_star:
     in: star_index, time_end
     out: result
 
@@ -20,7 +49,7 @@ function evolve_star(star_index, time_end, result):
 ```
 
 ```
-function evolve_for(star_index, time_delta, result):
+function evolve_for:
     in: star_index, time_delta
     out: result
 
@@ -36,7 +65,7 @@ function evolve_for(star_index, time_delta, result):
 ## Retrieve value
 
 ```
-function get_mass(star_index, mass, result):
+function get_mass:
     in: star_index
     out: result, mass
 
@@ -48,7 +77,7 @@ function get_mass(star_index, mass, result):
        another number if an error occurred
 ```
 ```
-function get_age(star_index, age, result):
+function get_age:
     in: star_index
     out: result, age
 
@@ -60,7 +89,7 @@ function get_age(star_index, age, result):
        another number if an error occurred
 ```
 ```
-function get_property_by_name(star_index, property_name, value, result):
+function get_property_by_name:
     in: star_index, property_name
     out: result
 
@@ -75,7 +104,7 @@ function get_property_by_name(star_index, property_name, value, result):
 ## Set value
 
 ```
-function set_mass(star_index, mass, result):
+function set_mass:
     in: star_index, mass
     out: result
 
@@ -87,7 +116,7 @@ function set_mass(star_index, mass, result):
        another number if an error occurred
 ```
 ```
-function set_property_by_name(star_index, property_name, value, result):
+function set_property_by_name:
     in: star_index, property_name, value
     out: result
 
