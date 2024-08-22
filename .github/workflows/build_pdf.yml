@@ -1,4 +1,4 @@
-name: build_pdf
+name: Build PDF
 
 on:
   push:
@@ -10,21 +10,16 @@ on:
   workflow_dispatch:
   
 jobs:
-  build-pdf:
-    runs-on: ubuntu-latest
-
+  convert_via_pandoc:
+    runs-on: ubuntu-22.04
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install pandoc
-        run: sudo apt-get install pandoc
-
-      - name: Run pandoc
-        run: pandoc -s README.md stellar_evolution_pseudocode.md --pdf-engine=xelatex -o stellar_evolution_api.pdf
-      
-      - name: make pdf available
-        uses: actions/upload-artifact@v4
+      - uses: docker://pandoc/latex:2.9
+        with:
+          args: README.md stellar_evolution_pseudocode.md --pdf-engine=xelatex --output=stellar_evolution_api.pdf
+          
+      - uses: actions/upload-artifact@v4
         with:
           name: stellar_evolution_api.pdf
           path: stellar_evolution_api.pdf
