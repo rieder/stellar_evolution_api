@@ -1,5 +1,7 @@
 # Stellar Evolution API v0.1
-This document describes function signatures for a stellar evolution API in pseudo code
+This document describes function signatures for a stellar evolution API in pseudo code.
+
+The API is based on the APIs used in AMUSE [https://amuse.readthedocs.io/en/latest/reference/introduction_interface_specification.html] and is further inspired by FDPS [https://github.com/FDPS/FDPS/blob/master/doc/doc_specs_cpp_en.pdf].
 
 ## Evolve a star
 
