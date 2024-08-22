@@ -17,6 +17,20 @@ function evolve_star(star_index, time_end, result):
        another number if an error occurred
 ```
 
+```
+function evolve_for(star_index, time_delta, result):
+    in: star_index, time_delta
+    out: result
+
+    # evolves star(star_index) until it is either
+    # - exactly time_delta older than the current time
+    # - reaches the first time step after this moment
+    result =
+       0  if successful
+       -1 if not implemented
+       another number if an error occurred
+```
+
 ## Retrieve value
 
 ```
