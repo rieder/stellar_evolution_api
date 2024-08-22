@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install pandoc
-        run: apt install pandoc
+        run: sudo apt-get install pandoc
 
       - name: Run pandoc
         run: pandoc -s README.md stellar_evolution_pseudocode.md --pdf-engine=xelatex -o stellar_evolution_api.pdf
