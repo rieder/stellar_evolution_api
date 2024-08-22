@@ -1,0 +1,30 @@
+name: build_pdf
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+    
+jobs:
+  build-pdf:
+    name: Build PDF from markdown files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Install pandoc
+        run: apt install pandoc
+
+      - name: Run pandoc
+        run: pandoc -s README.md stellar_evolution_pseudocode.md --pdf-engine=xelatex -o stellar_evolution_api.pdf
+      
+      - name: make pdf available
+      uses: actions/upload-artifact@v4
+      with:
+          name: stellar_evolution_api.pdf
+          path: stellar_evolution_api.pdf
