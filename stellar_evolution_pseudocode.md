@@ -3,6 +3,8 @@ This document describes function signatures for a stellar evolution API in pseud
 
 The API is based on the API used in [AMUSE](https://amuse.readthedocs.io/en/latest/reference/introduction_interface_specification.html) and is further inspired by [FDPS](https://github.com/FDPS/FDPS/blob/master/doc/doc_specs_cpp_en.pdf).
 
+See also: [https://github.com/amusecode/amuse/blob/main/src/amuse/community/interface/se.py]
+
 ## Initialise
 
 ```
@@ -35,13 +37,11 @@ function new_particle:
 ## Evolve a star
 
 ```
-function evolve_star:
-    in: star_index, time_end
+function evolve_one_step:
+    in: star_index
     out: result
 
-    # evolves star(star_index) until it either
-    # - reaches time_end exactly, or
-    # - reaches the first time step after this
+    # evolves star(star_index) for one time step
     result =
        0  if successful
        -1 if not implemented
@@ -53,9 +53,7 @@ function evolve_for:
     in: star_index, time_delta
     out: result
 
-    # evolves star(star_index) until it is either
-    # - exactly time_delta older than the current time
-    # - reaches the first time step after this moment
+    # evolves star(star_index) for exactly the given time
     result =
        0  if successful
        -1 if not implemented
@@ -64,6 +62,18 @@ function evolve_for:
 
 ## Retrieve value
 
+```
+function get_stellar_type:
+    in: star_index
+    out: result, stellar_type
+
+    # sets stellar_type to the evolution stage of the star (MS, WD, RGB, etc)
+    stellar_type = star(star_index).stellar_type
+    result = 
+       0  if successful
+       -1 if not implemented
+       another number if an error occurred   
+```
 ```
 function get_mass:
     in: star_index
@@ -88,8 +98,9 @@ function get_age:
        -1 if not implemented
        another number if an error occurred
 ```
+(analoguous: radius, temperature, luminosity, time step)
 ```
-function get_property_by_name:
+function get_star_property_by_name:
     in: star_index, property_name
     out: result
 
@@ -100,7 +111,18 @@ function get_property_by_name:
        -1 if not implemented
        another number if an error occurred
 ```
+```
+function get_global_property_by_name:
+    in: property_name
+    out: result
 
+    # sets value to be the current value of global property [property_name]
+    value = [property_name]
+    result = 
+       0  if successful
+       -1 if not implemented
+       another number if an error occurred
+```
 ## Set value
 
 ```
