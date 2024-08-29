@@ -17,7 +17,7 @@ jobs:
 
       - uses: docker://pandoc/latex:2.9
         with:
-          args: README.md stellar_evolution_pseudocode.md --pdf-engine=xelatex --output=stellar_evolution_api.pdf
+          args: introduction.md stellar_evolution_pseudocode.md --pdf-engine=xelatex --output=stellar_evolution_api.pdf
           
       - uses: actions/upload-artifact@v4
         with:
