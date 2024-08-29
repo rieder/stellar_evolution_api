@@ -5,7 +5,7 @@ The API is directly based on the API used in [AMUSE](https://amuse.readthedocs.i
 
 See also: [https://github.com/amusecode/amuse/blob/main/src/amuse/community/interface/se.py]
 
-## Initialise
+## Basic code functions
 
 ```
 function initialise_code:
